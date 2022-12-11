@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap');
+  </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style/style.css">
+  <title>Frontend Mentor | Intro section with dropdown navigation</title>
+</head>
+<body data-menu-status="closed">
+  <div class="page-overlay" id="menuOverlay" data-menu-status="closed"></div>
+  <header>
+    <img class="logo" src="./images/logo.svg" alt="Logo" />
+    <button
+     class="menu-toggle d-mobile-only"
+      aria-controls="primary-navigation"
+      aria-expanded="false">
+      <span class="visually-hidden">Menu</span>
+    </button>
+    
+    <nav class="main-menu">
+      <ul>
+        <li>
+          <a href="#" class="menu-item expandible">Features</a>
+          <nav class="sub-menu">
+            <a href="#" class="sub-menu-item with-icon" data-item="todo">Todo List</a>
+            <a href="#" class="sub-menu-item with-icon" data-item="calendar">Calendar</a>
+            <a href="#" class="sub-menu-item with-icon" data-item="reminders">Reminders</a>
+            <a href="#" class="sub-menu-item with-icon" data-item="planning">Planning</a>
+          </nav>
+        </li>
+        <li>
+          <a href="#" class="menu-item expandible">Company</a>
+          <nav class="sub-menu">
+            <a href="#" class="sub-menu-item">History</a>
+            <a href="#" class="sub-menu-item">Our team</a>
+            <a href="#" class="sub-menu-item">Blog</a>
+          </nav>
+        </li>
+        <li>
+          <a href="#" class="menu-item">Careers</a>
+        </li>
+        <li>
+          <a href="#" class="menu-item">About</a>
+        </li>
+      </ul>
+      <div class="menu-btn-container">
+        <button>Login</button>
+        <button class="bordered">Register</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <img src="./images/image-hero-mobile.png" alt="Main page image" class="cover-img d-mobile-only" />
+    <div class="cover-img d-desktop-only"></div>
+
+    <div class="page-content">
+      <h1 class="heading-1">
+        Make remote work
+      </h1>
+      <p>
+        Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.
+      </p>
+      <button class="inverted">
+        Learn more
+      </button>
+    </div>
+    
+    <footer>
+      <img src="./images/client-databiz.svg" alt="Databiz logo" />
+      <img src="./images/client-audiophile.svg" alt="Audiophile logo" />
+      <img src="./images/client-meet.svg" alt="Meet logo" />
+      <img src="./images/client-maker.svg" alt="Maker logo" />
+    </footer>
+
+  </main>
+
+  <script src="./js/page.js"></script>
+  <script>
+    new Page();
+  </script>
+</body>
+</html>
