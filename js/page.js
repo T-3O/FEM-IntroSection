@@ -5,8 +5,9 @@ class Page {
 
   initEvents() {
     const self = this;
-
     const menuBtn = document.querySelectorAll(".menu-toggle");
+    const skipNavBtn = document.querySelector(".skip-navigation")
+    
     menuBtn.forEach(btn => {
       btn.addEventListener("click", self.showHideMenu.bind(this));
     });
@@ -18,6 +19,10 @@ class Page {
 
     document.querySelector("#menuOverlay").addEventListener('click', () => {
       self.closeMenu();
+    });
+    skipNavBtn.addEventListener('click', () => {
+      document.querySelector("main button").focus();
+      skipNavBtn.blur();
     });
   };
 

@@ -299,6 +299,20 @@ button.inverted:focus-within {
   border-radius: var(--radius-400);
 }
 
+button.skip-navigation {
+  position: fixed;
+  top: -50rem;
+  left: 50%;
+  font-size: var(--fs-400);
+}
+button.skip-navigation:focus-within {
+  top: var(--gap-100);
+  color: var(--clr-neutral-900);
+  background-color: var(--clr-neutral-100);
+  border: 2px solid var(--clr-neutral-100);
+  z-index: 10;
+}
+
 body[data-menu-status="opened"] .menu-toggle {
   background-image: url('../images/icon-close-menu.svg');
   position: fixed;
