@@ -51,16 +51,26 @@ class Page {
 
   expandCollapseMenuItem(evt) {
     const target = evt.target;
-    if (target.classList.contains("opened"))
+    if (target.getAttribute("data-list-status") === "opened")
     {
-      target.classList.remove("opened");
+      target.nextElementSibling.addEventListener('animationend', () => {
+        target.setAttribute("data-list-status", "closed");
+      }, {once: true});
+      target.setAttribute("data-list-status", "closing");
       return;
     }
 
-    const menuItems = document.querySelectorAll(".menu-item.expandible.opened");
-    menuItems.forEach(item => {
-      item.classList.remove("opened");
-    });
-    target.classList.add("opened");
+    const menuItems = document.querySelectorAll(".menu-item.expandible[data-list-status='opened']");
+    if (menuItems.length > 0)
+    {
+      menuItems.forEach(item => {
+        item.setAttribute("data-list-status", "closing");
+        item.nextElementSibling.addEventListener('animationend', () => {
+          item.setAttribute("data-list-status", "closed");
+        }, {once: true});
+      });
+    }
+
+    target.setAttribute("data-list-status", "opened");
   };
 }
