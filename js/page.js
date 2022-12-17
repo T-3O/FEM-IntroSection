@@ -14,7 +14,7 @@ class Page {
 
     const menuItems = document.querySelectorAll(".menu-items, .expandible");
     menuItems.forEach(item => {
-      item.addEventListener("click", self.expandCollapseMenuItem);
+      item.addEventListener("click", self.expandCollapseMenuItem.bind(self));
     });
 
     document.querySelector("#menuOverlay").addEventListener('click', () => {
@@ -50,13 +50,11 @@ class Page {
   };
 
   expandCollapseMenuItem(evt) {
+    const self = this;
     const target = evt.target;
     if (target.getAttribute("data-list-status") === "opened")
     {
-      target.nextElementSibling.addEventListener('animationend', () => {
-        target.setAttribute("data-list-status", "closed");
-      }, {once: true});
-      target.setAttribute("data-list-status", "closing");
+      self.closeSubMenu(target);
       return;
     }
 
@@ -64,13 +62,15 @@ class Page {
     if (menuItems.length > 0)
     {
       menuItems.forEach(item => {
-        item.setAttribute("data-list-status", "closing");
-        item.nextElementSibling.addEventListener('animationend', () => {
-          item.setAttribute("data-list-status", "closed");
-        }, {once: true});
+        self.closeSubMenu(item);
       });
     }
-
     target.setAttribute("data-list-status", "opened");
+  };
+  closeSubMenu(item) {
+    item.nextElementSibling.addEventListener('animationend', () => {
+      item.setAttribute("data-list-status", "closed");
+    }, {once: true});
+    item.setAttribute("data-list-status", "closing");
   };
 }
