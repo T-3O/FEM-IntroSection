@@ -57,7 +57,7 @@ class Page {
       return;
     }
 
-    const menuItems = document.querySelectorAll(".menu-items, .expandible, .opened");
+    const menuItems = document.querySelectorAll(".menu-item.expandible.opened");
     menuItems.forEach(item => {
       item.classList.remove("opened");
     });
